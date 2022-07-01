@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-dialog v-model="dialog" width="500">
-      <template v-slot:activator="{ on, attrs }">
+      <template #activator="{ on, attrs }">
         <v-card class="mx-auto" color="colors.orange.lighten5">
           <v-container>
             <v-row dense justify="center" align="center">
@@ -11,7 +11,7 @@
                   <v-card-title class="text-h5"> クイズを主催する </v-card-title>
 
                   <v-card-subtitle>
-                    クイズを主催します。&nbsp主催者のみこちらを押してください。
+                    クイズを主催します。主催者のみこちらを押してください。
                   </v-card-subtitle>
 
                   <v-card-actions>
@@ -24,7 +24,7 @@
                   <v-card-title class="text-h5"> クイズに参加する </v-card-title>
 
                   <v-card-subtitle
-                    >他の人が開始したクイズに参加します。&nbsp参加にはルームIDが必要です。</v-card-subtitle
+                    >他の人が開始したクイズに参加します。参加にはルームIDが必要です。</v-card-subtitle
                   >
 
                   <v-card-actions>
@@ -45,15 +45,15 @@
             <v-row>
               <v-col cols="12" sm="6" md="4">
                 <v-text-field
-                  label="ルームID"
                   v-model="$v.form.clientRoomId.$model"
+                  label="ルームID"
                   required
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="4">
                 <v-text-field
-                  label="参加者名"
                   v-model="$v.form.clientName.$model"
+                  label="参加者名"
                   counter="10"
                   required
                 ></v-text-field>
@@ -72,18 +72,11 @@
 </template>
 
 <script>
-import HostBtn from "../components/HostBtn.vue";
-import F3Logo from "../components/F3Logo.vue";
-import ClientBtn from "../components/ClientBtn.vue";
-import EntryModal from "../components/EntryModal.vue";
 import { required, alphaNum, maxLength, minLength } from "vuelidate/lib/validators";
+import F3Logo from "../components/F3Logo.vue";
 export default {
-  head() {
-    return {
-      title: "TOP",
-    };
-  },
   name: "IndexPage",
+  components: { F3Logo },
   data() {
     return {
       dialog: false,
@@ -94,13 +87,15 @@ export default {
       },
     };
   },
-  components: { HostBtn, F3Logo, ClientBtn, EntryModal },
+  head() {
+    return {
+      title: "TOP",
+    };
+  },
   methods: {
     enterClient() {
       if (this.$v.$invalid) {
         alert("入力に誤りがあります");
-      } else if (false) {
-        alert("ルームIDが正しくありません");
       } else {
         this.$router.push({
           path: "client",
