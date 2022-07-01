@@ -15,7 +15,7 @@
                   </v-card-subtitle>
 
                   <v-card-actions>
-                    <v-btn text nuxt to="/host"> 開始 </v-btn>
+                    <v-btn text nuxt to="/hostview"> 開始 </v-btn>
                   </v-card-actions>
                 </v-card>
               </v-col>
@@ -98,7 +98,7 @@ export default {
         alert("入力に誤りがあります");
       } else {
         this.$router.push({
-          path: "client",
+          path: "clientview",
           query: { name: this.form.clientName, roomId: this.form.clientRoomId },
         });
       }
