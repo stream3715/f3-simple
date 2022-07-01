@@ -73,9 +73,9 @@
 
 <script>
 export default {
+  name: "IndexPage",
   head: {
     title: "ホスト",
   },
-  name: "IndexPage",
 };
 </script>
