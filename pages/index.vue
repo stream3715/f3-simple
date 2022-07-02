@@ -1,14 +1,16 @@
 <template>
   <div>
     <v-dialog v-model="dialog" width="500">
-      <template #activator="{ on, attrs }">
+      <template #activator="formActivator">
         <v-card class="mx-auto" color="colors.orange.lighten5">
           <v-container>
             <v-row dense justify="center" align="center">
               <F3Logo class="py-10" />
               <v-col cols="12">
                 <v-card color="primary" dark>
-                  <v-card-title class="text-h5"> クイズを主催する </v-card-title>
+                  <v-card-title class="text-h5">
+                    クイズを主催する
+                  </v-card-title>
 
                   <v-card-subtitle>
                     クイズを主催します。主催者のみこちらを押してください。
@@ -21,14 +23,22 @@
               </v-col>
               <v-col cols="12">
                 <v-card color="secondary" dark>
-                  <v-card-title class="text-h5"> クイズに参加する </v-card-title>
+                  <v-card-title class="text-h5">
+                    クイズに参加する
+                  </v-card-title>
 
                   <v-card-subtitle
                     >他の人が開始したクイズに参加します。参加にはルームIDが必要です。</v-card-subtitle
                   >
 
                   <v-card-actions>
-                    <v-btn text v-bind="attrs" v-on="on"> 参加する </v-btn>
+                    <v-btn
+                      text
+                      v-bind="formActivator.attrs"
+                      v-on="{ ...formActivator.on }"
+                    >
+                      参加する
+                    </v-btn>
                   </v-card-actions>
                 </v-card>
               </v-col>
@@ -63,8 +73,12 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text @click="dialog = false"> キャンセル </v-btn>
-          <v-btn color="blue darken-1" text @click="enterClient()"> 入室 </v-btn>
+          <v-btn color="blue darken-1" text @click="dialog = false">
+            キャンセル
+          </v-btn>
+          <v-btn color="blue darken-1" text @click="enterClient()">
+            入室
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -72,35 +86,40 @@
 </template>
 
 <script>
-import { required, alphaNum, maxLength, minLength } from "vuelidate/lib/validators";
-import F3Logo from "../components/F3Logo.vue";
+import {
+  required,
+  alphaNum,
+  maxLength,
+  minLength,
+} from 'vuelidate/lib/validators'
+import F3Logo from '../components/F3Logo.vue'
 export default {
-  name: "IndexPage",
+  name: 'IndexPage',
   components: { F3Logo },
   data() {
     return {
       dialog: false,
       form: {
-        clientName: "",
-        clientRoomId: "",
+        clientName: '',
+        clientRoomId: '',
         check: false,
       },
-    };
+    }
   },
   head() {
     return {
-      title: "TOP",
-    };
+      title: 'TOP',
+    }
   },
   methods: {
     enterClient() {
       if (this.$v.$invalid) {
-        alert("入力に誤りがあります");
+        alert('入力に誤りがあります')
       } else {
         this.$router.push({
-          path: "clientview",
+          path: 'clientview',
           query: { name: this.form.clientName, roomId: this.form.clientRoomId },
-        });
+        })
       }
     },
   },
@@ -119,5 +138,5 @@ export default {
       check: {},
     },
   },
-};
+}
 </script>

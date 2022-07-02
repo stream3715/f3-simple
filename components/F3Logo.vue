@@ -1,6 +1,9 @@
 <template>
   <svg
-    class="f3-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 638.69 331.66">
+    class="f3-logo"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 638.69 331.66"
+  >
     <defs>
       <style>
         .d {
