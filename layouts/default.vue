@@ -10,12 +10,12 @@
 
 <script>
 export default {
-  name: "DefaultLayout",
+  name: 'DefaultLayout',
   data() {
     return {
       fixed: false,
-      title: "F3",
-    };
+      title: 'F3',
+    }
   },
-};
+}
 </script>
