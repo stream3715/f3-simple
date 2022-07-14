@@ -1,50 +1,42 @@
 <template>
-  <div>
+  <v-container full-height>
     <v-dialog v-model="dialog" width="500">
       <template #activator="formActivator">
-        <v-card class="mx-auto" color="colors.orange.lighten5">
-          <v-container>
-            <v-row dense justify="center" align="center">
-              <F3Logo class="py-10" />
-              <v-col cols="12">
-                <v-card color="primary" dark>
-                  <v-card-title class="text-h5">
-                    クイズを主催する
-                  </v-card-title>
+        <v-container>
+          <v-row dense justify="center" align="center">
+            <!-- <F3Logo class="py-10" /> -->
+            <v-col cols="12">
+              <v-card color="primary" dark>
+                <v-card-title class="text-h5">
+                  クイズを主催する
+                </v-card-title>
 
-                  <v-card-subtitle>
-                    クイズを主催します。主催者のみこちらを押してください。
-                  </v-card-subtitle>
+                <v-card-subtitle>
+                  クイズを主催します。主催者のみこちらを押してください。
+                </v-card-subtitle>
 
-                  <v-card-actions>
-                    <v-btn text nuxt to="/hostview"> 開始 </v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-col>
-              <v-col cols="12">
-                <v-card color="secondary" dark>
-                  <v-card-title class="text-h5">
-                    クイズに参加する
-                  </v-card-title>
+                <v-card-actions>
+                  <v-btn text nuxt to="/host"> 開始 </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-col>
+            <v-col cols="12">
+              <v-card color="secondary" dark>
+                <v-card-title class="text-h5">
+                  クイズに参加する
+                </v-card-title>
 
-                  <v-card-subtitle
-                    >他の人が開始したクイズに参加します。参加にはルームIDが必要です。</v-card-subtitle
-                  >
+                <v-card-subtitle>他の人が開始したクイズに参加します。参加にはルームIDが必要です。</v-card-subtitle>
 
-                  <v-card-actions>
-                    <v-btn
-                      text
-                      v-bind="formActivator.attrs"
-                      v-on="{ ...formActivator.on }"
-                    >
-                      参加する
-                    </v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-card>
+                <v-card-actions>
+                  <v-btn text v-bind="formActivator.attrs" v-on="{ ...formActivator.on }">
+                    参加する
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
       </template>
       <v-card>
         <v-card-title>
@@ -54,19 +46,10 @@
           <v-container>
             <v-row>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field
-                  v-model="$v.form.clientRoomId.$model"
-                  label="ルームID"
-                  required
-                ></v-text-field>
+                <v-text-field v-model="$v.form.clientRoomId.$model" label="ルームID" required></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field
-                  v-model="$v.form.clientName.$model"
-                  label="参加者名"
-                  counter="10"
-                  required
-                ></v-text-field>
+                <v-text-field v-model="$v.form.clientName.$model" label="参加者名" counter="10" required></v-text-field>
               </v-col>
             </v-row>
           </v-container>
@@ -82,7 +65,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -117,7 +100,7 @@ export default {
         alert('入力に誤りがあります')
       } else {
         this.$router.push({
-          path: 'clientview',
+          path: 'client',
           query: { name: this.form.clientName, roomId: this.form.clientRoomId },
         })
       }
