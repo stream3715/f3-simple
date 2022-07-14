@@ -7,9 +7,7 @@
             <!-- <F3Logo class="py-10" /> -->
             <v-col cols="12">
               <v-card color="primary" dark>
-                <v-card-title class="text-h5">
-                  クイズを主催する
-                </v-card-title>
+                <v-card-title class="text-h5"> クイズを主催する </v-card-title>
 
                 <v-card-subtitle>
                   クイズを主催します。主催者のみこちらを押してください。
@@ -22,14 +20,18 @@
             </v-col>
             <v-col cols="12">
               <v-card color="secondary" dark>
-                <v-card-title class="text-h5">
-                  クイズに参加する
-                </v-card-title>
+                <v-card-title class="text-h5"> クイズに参加する </v-card-title>
 
-                <v-card-subtitle>他の人が開始したクイズに参加します。参加にはルームIDが必要です。</v-card-subtitle>
+                <v-card-subtitle
+                  >他の人が開始したクイズに参加します。参加にはルームIDが必要です。</v-card-subtitle
+                >
 
                 <v-card-actions>
-                  <v-btn text v-bind="formActivator.attrs" v-on="{ ...formActivator.on }">
+                  <v-btn
+                    text
+                    v-bind="formActivator.attrs"
+                    v-on="{ ...formActivator.on }"
+                  >
                     参加する
                   </v-btn>
                 </v-card-actions>
@@ -46,10 +48,19 @@
           <v-container>
             <v-row>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field v-model="$v.form.clientRoomId.$model" label="ルームID" required></v-text-field>
+                <v-text-field
+                  v-model="$v.form.clientRoomId.$model"
+                  label="ルームID"
+                  required
+                ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field v-model="$v.form.clientName.$model" label="参加者名" counter="10" required></v-text-field>
+                <v-text-field
+                  v-model="$v.form.clientName.$model"
+                  label="参加者名"
+                  counter="10"
+                  required
+                ></v-text-field>
               </v-col>
             </v-row>
           </v-container>
@@ -75,10 +86,9 @@ import {
   maxLength,
   minLength,
 } from 'vuelidate/lib/validators'
-import F3Logo from '../components/F3Logo.vue'
 export default {
   name: 'IndexPage',
-  components: { F3Logo },
+  components: {},
   data() {
     return {
       dialog: false,
